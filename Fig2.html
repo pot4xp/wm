@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Figura 2 – Fluxo Preditivo do World Model para Eletrocultura com PANCs: da leitura sensorial ao controle ciberfísico.">
+  <title>Figura 2 – Fluxo Preditivo do World Model para Eletrocultura</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1520;
+      --card: rgba(12, 22, 38, 0.97);
+      --blue: #1565c0;
+      --cyan: #00acc1;
+      --purple: #7b1fa2;
+      --green: #4caf50;
+      --orange: #f57c00;
+      --text: #e3f2fd;
+      --muted: #90caf9;
+      --border: #1565c0;
+      --glow: rgba(21, 101, 192, 0.3);
+      --heading: 'Fredoka', cursive;
+      --body: 'Nunito', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(ellipse at 20% 20%, #0a1525 0%, #060d1a 70%, #030810 100%);
+      color: var(--text);
+      font-family: var(--body);
+      padding: 3rem 1.5rem 4rem;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 10% 30%, rgba(21, 101, 192, 0.07) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(123, 31, 162, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .food-banner {
+      font-size: 2.8rem;
+      letter-spacing: 0.9rem;
+      filter: drop-shadow(0 0 12px rgba(21, 101, 192, 0.6));
+      animation: sway 4.5s ease-in-out infinite alternate;
+      user-select: none;
+    }
+
+    @keyframes sway {
+      from {
+        transform: translateY(0) rotate(-1deg);
+      }
+
+      to {
+        transform: translateY(-6px) rotate(1deg);
+      }
+    }
+
+    h1 {
+      font-family: var(--heading);
+      font-size: 3rem;
+      color: var(--cyan);
+      text-align: center;
+      text-shadow: 0 0 30px rgba(0, 172, 193, 0.6);
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: 700;
+      max-width: 900px;
+      line-height: 1.7;
+    }
+
+    .subtitle span {
+      color: var(--green);
+    }
+
+    /* ── Grid de 6 cards (3×2) ── */
+    .grid-6 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1400px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-6 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stage-card {
+      background: var(--card);
+      border-radius: 20px;
+      border: 2px solid transparent;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      padding: 1.5rem;
+      overflow-x: auto;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stage-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 50px rgba(21, 101, 192, 0.3);
+    }
+
+    .stage-card .badge {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-family: var(--heading);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      opacity: 0.7;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    /* Variantes de cor por stage */
+    .s1 {
+      border-color: #00acc1;
+    }
+
+    .s1 .badge {
+      background: rgba(0, 172, 193, 0.15);
+      color: #00acc1;
+    }
+
+    .s2 {
+      border-color: #7b1fa2;
+    }
+
+    .s2 .badge {
+      background: rgba(123, 31, 162, 0.15);
+      color: #ce93d8;
+    }
+
+    .s3 {
+      border-color: #1565c0;
+    }
+
+    .s3 .badge {
+      background: rgba(21, 101, 192, 0.15);
+      color: #90caf9;
+    }
+
+    .s4 {
+      border-color: #2e7d32;
+    }
+
+    .s4 .badge {
+      background: rgba(46, 125, 50, 0.15);
+      color: #a5d6a7;
+    }
+
+    .s5 {
+      border-color: #e65100;
+    }
+
+    .s5 .badge {
+      background: rgba(230, 81, 0, 0.15);
+      color: #ffccbc;
+    }
+
+    .s6 {
+      border-color: #f9a825;
+    }
+
+    .s6 .badge {
+      background: rgba(249, 168, 37, 0.15);
+      color: #ffe082;
+    }
+
+    .spinner-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 2.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .spinner {
+      width: 42px;
+      height: 42px;
+      border: 3px solid rgba(21, 101, 192, 0.2);
+      border-top-color: var(--cyan);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ── Seta de fluxo entre cards ── */
+    .flow-arrow {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--muted);
+      opacity: 0.5;
+      letter-spacing: 3rem;
+      line-height: 1;
+    }
+
+    /* ── Caption ── */
+    .caption {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-style: italic;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(21, 101, 192, 0.25);
+      padding: 1.2rem 2rem;
+      border-radius: 16px;
+      max-width: 950px;
+      line-height: 1.7;
+    }
+
+    .food-footer {
+      font-size: 2.2rem;
+      letter-spacing: 0.7rem;
+      opacity: 0.5;
+      user-select: none;
+      animation: sway 5.5s ease-in-out infinite alternate-reverse;
+    }
+
+    .mermaid svg {
+      min-width: 280px;
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="food-banner">📡 👁️ 🧬 🎯 🔩 💡</div>
+
+    <h1>🤖 Figura 2 — Fluxo Preditivo<br>do World Model para Eletrocultura</h1>
+
+    <p class="subtitle">
+      Pipeline completo: <span>Sensores Biofísicos → Percepção (VAE) → Predição (MDN-RNN) → Controle Neural → Atuação
+        nas Bobinas</span><br>
+      Arquitetura V-M-C de Ha &amp; Schmidhuber (2018) aplicada ao cultivo de PANCs
+    </p>
+
+    <div class="grid-6" id="svg-grid"></div>
+
+    <p class="caption">
+      🌿 O ciclo preditivo fecha o loop ciberfísico: a planta <em>informa</em> o sistema e o sistema <em>antecipa</em> a
+      intervenção,<br>
+      aplicando pulsos eletromagnéticos nas bobinas de cobre dias antes que sintomas de estresse sejam visíveis.<br>
+      💡 Os <em>outputs</em> secundários transformam a bioeletrogênese das PANCs em instalações luminosas generativas.
+    </p>
+
+    <div class="food-footer">🌊 📈 ⚡ 🔄 🎨 🌱</div>
+
+  </div>
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'base',
+      themeVariables: {
+        fontFamily: 'Nunito, sans-serif',
+        fontSize: '13px',
+        primaryColor: '#0d1520',
+        primaryTextColor: '#e3f2fd',
+        primaryBorderColor: '#1565c0',
+        lineColor: '#90caf9',
+        clusterBkg: 'rgba(12,22,38,0.9)',
+        clusterBorder: '#1565c0',
+        edgeLabelBackground: 'rgba(6,13,26,0.95)',
+      },
+      flowchart: {
+        nodeSpacing: 25,
+        rankSpacing: 40,
+        padding: 15,
+        curve: 'basis',
+        htmlLabels: true,
+      }
+    });
+
+    const stages = [
+      {
+        cls: 's1',
+        badge: 'STAGE 1',
+        title: '📡 Entradas Multissensoriais',
+        def: `flowchart TB
+    S1["🌡️ Temp. + Umidade<br/><small>VPD Atmosférico</small>"]
+    S2["💧 EC + Capacitância<br/><small>Solo Rizosférico</small>"]
+    S3["📷 NDVI + RGB<br/><small>Câmera OV3660</small>"]
+    S4["⚡ Bioeletricidade<br/><small>Capacitância Foliar</small>"]
+    S1 --> S3
+    S2 --> S4
+    style S1 fill:#002533,stroke:#00acc1,color:#b2ebf2
+    style S2 fill:#002533,stroke:#00acc1,color:#b2ebf2
+    style S3 fill:#002533,stroke:#00acc1,color:#b2ebf2
+    style S4 fill:#002533,stroke:#00acc1,color:#b2ebf2`
+      },
+      {
+        cls: 's2',
+        badge: 'STAGE 2',
+        title: '🔧 ESP32-S3 — Edge Processing',
+        def: `flowchart TB
+    E1["🧹 Filtro Kalman<br/><small>Remoção de ruído</small>"]
+    E2["🔢 ADC 12-bit<br/><small>Digitalização</small>"]
+    E3["📶 MQTT/CoAP<br/><small>Envio à nuvem</small>"]
+    E1 --> E2 --> E3
+    style E1 fill:#1a0033,stroke:#7b1fa2,color:#e1bee7
+    style E2 fill:#1a0033,stroke:#7b1fa2,color:#e1bee7
+    style E3 fill:#1a0033,stroke:#7b1fa2,color:#e1bee7`
+      },
+      {
+        cls: 's3',
+        badge: 'STAGE 3 — Modelo V',
+        title: '👁️ VAE — Percepção Latente',
+        def: `flowchart TB
+    ENC["🔽 Encoder<br/><small>Compressão não-linear</small>"]
+    ZT["⭕ z_t — Estado Latente<br/><small>Saúde fisiológica</small>"]
+    DEC["🔼 Decoder<br/><small>Reconstrução diagnóstica</small>"]
+    ENC --> ZT --> DEC
+    style ENC fill:#001533,stroke:#1565c0,color:#bbdefb
+    style ZT  fill:#002060,stroke:#42a5f5,color:#e3f2fd,stroke-width:3px
+    style DEC fill:#001533,stroke:#1565c0,color:#bbdefb`
+      },
+      {
+        cls: 's4',
+        badge: 'STAGE 4 — Modelo M',
+        title: '🧬 MDN-RNN — Predição Temporal',
+        def: `flowchart TB
+    HT["🔄 Estado Oculto h_t<br/><small>Memória da planta</small>"]
+    AT["🔀 Ação hipotética a_t<br/><small>Pulso PEMF simulado</small>"]
+    PD["📈 P(z_{t+1} | z_t, a_t)<br/><small>Distribuição futura</small>"]
+    HT --> PD
+    AT --> PD
+    style HT fill:#001500,stroke:#2e7d32,color:#c8e6c9
+    style AT fill:#001500,stroke:#2e7d32,color:#c8e6c9
+    style PD fill:#003300,stroke:#4caf50,color:#e8f5e9,stroke-width:3px`
+      },
+      {
+        cls: 's5',
+        badge: 'STAGE 5 — Modelo C',
+        title: '🎯 Controlador — Política Neural',
+        def: `flowchart TB
+    IN["📥 (z_t , h_t)<br/><small>Estado completo</small>"]
+    POL["🗺️ Política π<br/><small>Controlador neural</small>"]
+    REW["🏆 Recompensa<br/><small>Maximizar biomassa</small>"]
+    IN --> POL --> REW
+    style IN  fill:#2a0a00,stroke:#e64a19,color:#ffccbc
+    style POL fill:#3a1000,stroke:#f57c00,color:#ffe0b2,stroke-width:3px
+    style REW fill:#2a0a00,stroke:#e64a19,color:#ffccbc`
+      },
+      {
+        cls: 's6',
+        badge: 'STAGE 6 — Outputs',
+        title: '📤 Atuação Ciberfísica & Arte',
+        def: `flowchart TB
+    B["🔩 Bobinas PEMF<br/><small>PWM · MOSFETs</small>"]
+    I["💧 Irrigação<br/><small>Válvula solenóide</small>"]
+    L["💡 LEDs WS2812B<br/><small>Arte luminosa generativa</small>"]
+    B --> I --> L
+    style B fill:#2a1f00,stroke:#f9a825,color:#fff9c4
+    style I fill:#2a1f00,stroke:#f9a825,color:#fff9c4
+    style L fill:#2a1f00,stroke:#f9a825,color:#fff9c4`
+      }
+    ];
+
+    async function renderAll() {
+      const grid = document.getElementById('svg-grid');
+
+      for (let i = 0; i < stages.length; i++) {
+        const st = stages[i];
+
+        const card = document.createElement('div');
+        card.className = `stage-card ${st.cls}`;
+
+        const badge = document.createElement('div');
+        badge.className = 'badge';
+        badge.textContent = st.badge;
+        card.appendChild(badge);
+
+        const titleEl = document.createElement('p');
+        titleEl.style.cssText = 'font-weight:800;font-size:0.9rem;margin-bottom:0.8rem;color:inherit;';
+        titleEl.textContent = st.title;
+        card.appendChild(titleEl);
+
+        const spinWrap = document.createElement('div');
+        spinWrap.className = 'spinner-wrap';
+        spinWrap.innerHTML = '<div class="spinner"></div>Carregando…';
+        card.appendChild(spinWrap);
+
+        const renderTarget = document.createElement('div');
+        card.appendChild(renderTarget);
+
+        grid.appendChild(card);
+
+        try {
+          const { svg } = await mermaid.render(`svg-stage-${i}`, st.def);
+          spinWrap.style.display = 'none';
+          renderTarget.innerHTML = svg;
+          renderTarget.querySelectorAll('text, tspan').forEach(el => {
+            el.style.fontFamily = "'Nunito', sans-serif";
+          });
+        } catch (err) {
+          spinWrap.innerHTML = `<div style="color:#ff7043;font-size:0.8rem;padding:1rem;">
+            ⚠️ Erro: ${err.message}</div>`;
+          console.error(`Stage ${i} error:`, err);
+        }
+      }
+
+      // Inserir seta de fluxo vertical entre linhas
+      const arrows = grid.querySelectorAll('.flow-arrow');
+      if (!arrows.length) {
+        const sep1 = document.createElement('div');
+        sep1.className = 'flow-arrow';
+        sep1.textContent = '↓ ↓ ↓';
+        grid.insertBefore(sep1, grid.children[3]);
+      }
+    }
+
+    renderAll();
+  </script>
+
+  <script>
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        document.querySelectorAll('[style*="animation"]').forEach(el => {
+          const anim = el.style.animation;
+          el.style.animation = 'none';
+          requestAnimationFrame(() => { el.style.animation = anim; });
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Figura 1 – Arquitetura Modular do Sistema de Eletro-informática para Cultivo de PANCs com Bobinas de Cobre e World Models.">
+  <title>Figura 1 – Arquitetura Modular do Sistema de Eletro-informática</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d1f0f;
+      --bg2: #111e12;
+      --card: rgba(20, 40, 22, 0.97);
+      --green: #4caf50;
+      --green2: #81c784;
+      --teal: #26a69a;
+      --orange: #ff7043;
+      --text: #e8f5e9;
+      --muted: #a5d6a7;
+      --border: #2e7d32;
+      --glow: rgba(76, 175, 80, 0.3);
+      --heading: 'Fredoka', cursive;
+      --body: 'Nunito', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(ellipse at 20% 20%, #0a1f0b 0%, #071409 60%, #030d04 100%);
+      color: var(--text);
+      font-family: var(--body);
+      padding: 3rem 1.5rem 4rem;
+      min-height: 100vh;
+    }
+
+    /* ── Grid de partículas decorativas ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 25%, rgba(76, 175, 80, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 85% 75%, rgba(38, 166, 154, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    /* ── Banner de emojis ── */
+    .food-banner {
+      font-size: 3.2rem;
+      letter-spacing: 0.8rem;
+      filter: drop-shadow(0 0 12px rgba(76, 175, 80, 0.5));
+      animation: sway 4s ease-in-out infinite alternate;
+      user-select: none;
+    }
+
+    @keyframes sway {
+      from {
+        transform: translateY(0) rotate(-1deg);
+      }
+
+      to {
+        transform: translateY(-6px) rotate(1deg);
+      }
+    }
+
+    /* ── Títulos ── */
+    h1 {
+      font-family: var(--heading);
+      font-size: 3.2rem;
+      color: var(--green);
+      text-align: center;
+      text-shadow: 0 0 30px rgba(76, 175, 80, 0.6);
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 1.15rem;
+      color: var(--muted);
+      font-weight: 700;
+      max-width: 900px;
+      line-height: 1.6;
+    }
+
+    .subtitle span {
+      color: var(--orange);
+    }
+
+    /* ── Card do diagrama ── */
+    .diagram-card {
+      width: 100%;
+      max-width: 1400px;
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 0 60px var(--glow), 0 20px 50px rgba(0, 0, 0, 0.6);
+      padding: 2rem;
+      overflow-x: auto;
+      position: relative;
+    }
+
+    .diagram-card::before {
+      content: 'FIGURA 1';
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-family: var(--heading);
+      font-size: 0.9rem;
+      color: var(--green);
+      opacity: 0.6;
+      letter-spacing: 3px;
+    }
+
+    /* Spinner */
+    .spinner-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 4rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .spinner {
+      width: 56px;
+      height: 56px;
+      border: 4px solid rgba(76, 175, 80, 0.2);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ── Legenda ── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      max-width: 1000px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    /* ── Caption ── */
+    .caption {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-style: italic;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(76, 175, 80, 0.2);
+      padding: 1.2rem 2rem;
+      border-radius: 16px;
+      max-width: 900px;
+      line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    .food-footer {
+      font-size: 2.4rem;
+      letter-spacing: 0.6rem;
+      opacity: 0.6;
+      user-select: none;
+      animation: sway 5s ease-in-out infinite alternate-reverse;
+    }
+
+    /* ── Mermaid overrides ── */
+    .mermaid svg {
+      min-width: 900px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Forçar tema nos nós após render */
+    #render-fig1 svg text {
+      font-family: 'Nunito', sans-serif !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="food-banner">🌱 🔩 ⚡ 🤖 🌿 💡 📡</div>
+
+    <h1>🌿 Figura 1 — Arquitetura Modular<br>do Sistema de Eletro-informática</h1>
+
+    <p class="subtitle">
+      Integração de <span>Eletrocultura · ESP32-S3 · World Models (V-M-C) · PANCs</span><br>
+      Da camada física até as aplicações de agricultura urbana e paisagens luminosas
+    </p>
+
+    <div class="diagram-card">
+      <div class="spinner-wrap" id="spinner-fig1">
+        <div class="spinner"></div>
+        Renderizando arquitetura modular…
+      </div>
+      <div id="render-fig1"></div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#1b5e20"></div>Camada Física — Plantas & Sensores
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#0d47a1"></div>Camada Edge — ESP32-S3
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#4a148c"></div>World Model — IA Preditiva
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#e65100"></div>Aplicações — Cultivo & Arte
+      </div>
+    </div>
+
+    <p class="caption">
+      🔩 As quatro camadas do sistema ciberfísico integrado formam uma malha de controle fechado
+      (<em>closed-loop</em>).<br>
+      🌿 Dados biofísicos das PANCs fluem para cima; comandos preditivos do <em>World Model</em> fluem para baixo,<br>
+      ajustando em tempo real as bobinas de cobre, válvulas de irrigação e painéis luminosos WS2812B.
+    </p>
+
+    <div class="food-footer">🍃 🔋 🧠 📶 🌾 ⚙️ 💡</div>
+
+  </div>
+
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'base',
+      themeVariables: {
+        fontFamily: 'Nunito, sans-serif',
+        fontSize: '15px',
+        primaryColor: '#1b2e1c',
+        primaryTextColor: '#e8f5e9',
+        primaryBorderColor: '#4caf50',
+        lineColor: '#81c784',
+        secondaryColor: '#0d1f35',
+        tertiaryColor: '#1f0d35',
+        clusterBkg: 'rgba(20,40,22,0.8)',
+        clusterBorder: '#4caf50',
+        edgeLabelBackground: 'rgba(13,31,9,0.9)',
+      },
+      flowchart: {
+        nodeSpacing: 30,
+        rankSpacing: 50,
+        padding: 20,
+        curve: 'basis',
+        htmlLabels: true,
+      }
+    });
+
+    const def = `flowchart TB
+
+  subgraph FISICA["🌿  CAMADA FÍSICA — Organismos & Transdutores"]
+    direction LR
+    PA["🌱 PANCs<br/><small>Ora-pro-nóbis · Taioba · Peixinho</small>"]
+    CB["🔩 Bobinas de Testa de Cobre<br/><small>5–15 espiras · PEMF & DC</small>"]
+    SE["📡 Sensores Ambientais<br/><small>VPD · EC Solo · NDVI · OV3660</small>"]
+    PA --- CB
+    CB --- SE
+  end
+
+  subgraph EDGE["⚡  CAMADA EDGE — ESP32-S3 WROOM"]
+    direction LR
+    HW["🔧 Terminal Block Shield<br/><small>Freenove FNK0091 · 3A · 2.54 mm</small>"]
+    KF["🧠 Edge AI · Filtro Kalman<br/><small>240 MHz LX7 · 8 MB PSRAM</small>"]
+    PW["⚙️ Atuadores PWM<br/><small>LEDC · MCPWM · MOSFETs</small>"]
+    MQ["📶 Mesh IoT<br/><small>MQTT · CoAP · Wi-Fi 802.11</small>"]
+    HW --> KF
+    KF --> PW
+    KF --> MQ
+  end
+
+  subgraph AI["🤖  WORLD MODEL — IA Preditiva"]
+    direction LR
+    V["👁️ Modelo V<br/><small>VAE — Percepção Latente z_t</small>"]
+    M["🧬 Modelo M<br/><small>MDN-RNN / LSTM — Predição</small>"]
+    C["🎯 Modelo C<br/><small>Controlador Neural — Política</small>"]
+    V --> M --> C
+  end
+
+  subgraph GGUF["📦  MODELOS GGUF (Edge/Cloud)"]
+    direction LR
+    G1["⚡ Qwen3.5-0.8B<br/><small>Edge Local — Controlador (C)</small>"]
+    G2["📱 RWKV7-2.9B<br/><small>Mobile/Tablet — Modelo M</small>"]
+    G3["☁️ Qwen3.5-27B<br/><small>Cloud — Orquestrador</small>"]
+    G1 --- G2 --- G3
+  end
+
+  subgraph APP["🎨  APLICAÇÕES — Outputs"]
+    direction LR
+    AG["🥬 Cultivo de PANCs<br/><small>Agricultura Urbana/Vertical</small>"]
+    LU["💡 Arte Luminosa<br/><small>WS2812B · DMX · Fachadas</small>"]
+    DB["📊 Dashboard IoT<br/><small>Monitoramento · Alertas</small>"]
+    AG --- LU --- DB
+  end
+
+  FISICA  ==>|"Dados brutos<br/>multissensoriais"| EDGE
+  EDGE    ==>|"Vetores latentes<br/>comprimidos"| AI
+  AI      ==>|"Comandos preditivos<br/>PWM & Irrigação"| EDGE
+  EDGE    ==>|"Pulsos eletromagnéticos<br/>nas bobinas"| FISICA
+  AI      ==>|"Resultados &<br/>Modelos GGUF"| GGUF
+  GGUF    ==>|"Inferência<br/>distribuída"| AI
+  AI      ==>|"Outputs &<br/>Visualizações"| APP
+  FISICA  -.->|"Bioeletricidade<br/>das folhas"| APP
+
+  style FISICA fill:#0a1f0b,stroke:#4caf50,stroke-width:3px,color:#a5d6a7
+  style EDGE   fill:#0a1525,stroke:#1565c0,stroke-width:3px,color:#90caf9
+  style AI     fill:#1a0a2e,stroke:#7b1fa2,stroke-width:3px,color:#ce93d8
+  style GGUF   fill:#1a1200,stroke:#f57f17,stroke-width:3px,color:#ffe082
+  style APP    fill:#1a0a00,stroke:#e64a19,stroke-width:3px,color:#ffccbc
+  linkStyle default stroke:#4caf50,stroke-width:2px`;
+
+    async function renderDiagram() {
+      const spinner = document.getElementById('spinner-fig1');
+      const target = document.getElementById('render-fig1');
+      try {
+        const { svg } = await mermaid.render('svg-fig1', def);
+        spinner.style.display = 'none';
+        target.innerHTML = svg;
+
+        // Reforçar tipografia
+        target.querySelectorAll('text, tspan').forEach(el => {
+          el.style.fontFamily = "'Nunito', sans-serif";
+        });
+
+        // Reforçar espessura das arestas
+        target.querySelectorAll('.flowchart-link, .edgePath path').forEach(el => {
+          el.style.setProperty('stroke-width', '2.5px', 'important');
+        });
+
+      } catch (err) {
+        spinner.innerHTML = `<div style="color:#ff7043;font-size:1rem;padding:2rem;">
+          ⚠️ Erro ao renderizar diagrama.<br><small>${err.message}</small></div>`;
+        console.error('Mermaid error:', err);
+      }
+    }
+
+    renderDiagram();
+  </script>
+
+  <!-- Reset animações ao retornar à aba -->
+  <script>
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        document.querySelectorAll('[style*="animation"]').forEach(el => {
+          const anim = el.style.animation;
+          el.style.animation = 'none';
+          requestAnimationFrame(() => { el.style.animation = anim; });
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
